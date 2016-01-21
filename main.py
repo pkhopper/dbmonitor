@@ -52,7 +52,7 @@ class InternalErr:
 # pages
 class PageIndex:
     def GET(self, path=None):
-        if not session.logged_in:
+        if not hasattr(session, "logged_in") or not session.logged_in:
             raise web.seeother('/login')
         return render.PageIndex()
 
